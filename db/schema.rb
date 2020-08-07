@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_095525) do
+ActiveRecord::Schema.define(version: 2020_08_07_102737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 2020_08_07_095525) do
     t.index ["user_id"], name: "index_form1s_on_user_id"
   end
 
+  create_table "form2s", force: :cascade do |t|
+    t.string "company_name"
+    t.string "tax_code"
+    t.string "address"
+    t.string "name"
+    t.string "career"
+    t.date "date"
+    t.string "work_decs"
+    t.integer "income"
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_form2s_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -50,4 +66,5 @@ ActiveRecord::Schema.define(version: 2020_08_07_095525) do
   end
 
   add_foreign_key "form1s", "users"
+  add_foreign_key "form2s", "users"
 end

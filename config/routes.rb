@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'form2s/new', to: 'form2s#new'
   get 'form1s/new', to: 'form1s#new'
 
   get 'sessions/new'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get '/logout',    to: 'sessions#destroy'
   resources :users
   resources :form1s
+  resources :form2s
 
   # get 'static_pages/home'
   # get 'static_pages/help'
