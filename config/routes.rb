@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'form1s/new', to: 'form1s#new'
+
   get 'sessions/new'
   get 'users/new'
   # root 'users#index'
@@ -11,8 +13,9 @@ Rails.application.routes.draw do
   get '/signup',    to: 'users#new'
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+  get '/logout',    to: 'sessions#destroy'
   resources :users
+  resources :form1s
 
   # get 'static_pages/home'
   # get 'static_pages/help'

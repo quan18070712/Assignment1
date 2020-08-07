@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  has_many :form1s
   attr_accessor :remember_token
 
   # validates :name, presence: true

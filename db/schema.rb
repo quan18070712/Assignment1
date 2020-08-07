@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_023750) do
+ActiveRecord::Schema.define(version: 2020_08_07_095525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.integer "no"
+    t.date "date"
+    t.string "name"
+    t.integer "income"
+    t.string "desc"
+    t.string "sign"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "form1s", force: :cascade do |t|
+    t.string "name"
+    t.string "time"
+    t.string "job"
+    t.string "date"
+    t.string "customer"
+    t.string "income"
+    t.string "work_desc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_form1s_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -24,4 +49,5 @@ ActiveRecord::Schema.define(version: 2020_08_07_023750) do
     t.string "remember_digest"
   end
 
+  add_foreign_key "form1s", "users"
 end
