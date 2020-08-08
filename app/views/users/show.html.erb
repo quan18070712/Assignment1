@@ -13,6 +13,64 @@
 </div>
 <div class="row">
   <aside class="col-md-4">
+    <section class="form1s">
+      <h1>
+          <% @user.form1s.each do |form1| %>
+
+            <h1>Time</h1>
+            <li><%= form1.time %><br/><br/>
+
+             <h1>Job/Career</h1>
+            <li><%= form1.job %><br/><br/>
+
+             <h1>Customer</h1>
+            <li><%= form1.customer %><br/><br/>
+
+             <h1>Financial</h1>
+            <li><%= form1.income %><br/><br/>
+
+             <h1>Description</h1>
+            <li><%= form1.work_desc %><br/><br/>
+
+          <% end %>
+      </h1>
+    </section>
+  </aside>
+</div>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="form2s">
+      <h1>
+          <% @user.form2s.each do |form2| %>
+
+            <h1>Company Name</h1>
+            <li><%= form2.company_name %><br/><br/>
+
+             <h1>Tax Code</h1>
+            <li><%= form2.tax_code %><br/><br/>
+
+             <h1>Address</h1>
+            <li><%= form2.address %><br/><br/>
+
+             <h1>Job/Career</h1>
+            <li><%= form2.career %><br/><br/>
+
+            <h1>Financial</h1>
+            <li><%= form2.income %><br/><br/>
+
+            <h1>Description</h1>
+            <li><%= form2.work_decs %><br/><br/>
+
+            <h1>Note</h1>
+            <li><%= form2.note %><br/><br/>
+
+          <% end %>
+      </h1>
+    </section>
+  </aside>
+</div>
+<div class="row">
+  <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <li><%= link_to "Income reporting form for Freelancer", form1s_new_path %></li>
