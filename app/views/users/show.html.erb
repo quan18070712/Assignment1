@@ -4,7 +4,9 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.name %><br/>
+        <br/>
+        <%= @user.email %>
       </h1>
     </section>
   </aside>
