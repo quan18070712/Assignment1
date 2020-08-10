@@ -20,64 +20,7 @@
     <% end %>
   </div>
 </div>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="form1s">
-      <h1>
-          <% @user.form1s.each do |form1| %>
 
-            <h1>Time</h1>
-            <li><%= form1.time %><br/><br/>
-
-             <h1>Job/Career</h1>
-            <li><%= form1.job %><br/><br/>
-
-             <h1>Customer</h1>
-            <li><%= form1.customer %><br/><br/>
-
-             <h1>Financial</h1>
-            <li><%= form1.income %><br/><br/>
-
-             <h1>Description</h1>
-            <li><%= form1.work_desc %><br/><br/>
-
-          <% end %>
-      </h1>
-    </section>
-  </aside>
-</div>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="form2s">
-      <h1>
-          <% @user.form2s.each do |form2| %>
-
-            <h1>Company Name</h1>
-            <li><%= form2.company_name %><br/><br/>
-
-             <h1>Tax Code</h1>
-            <li><%= form2.tax_code %><br/><br/>
-
-             <h1>Address</h1>
-            <li><%= form2.address %><br/><br/>
-
-             <h1>Job/Career</h1>
-            <li><%= form2.career %><br/><br/>
-
-            <h1>Financial</h1>
-            <li><%= form2.income %><br/><br/>
-
-            <h1>Description</h1>
-            <li><%= form2.work_decs %><br/><br/>
-
-            <h1>Note</h1>
-            <li><%= form2.note %><br/><br/>
-
-          <% end %>
-      </h1>
-    </section>
-  </aside>
-</div>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -96,3 +39,67 @@
     </section>
   </aside>
 </div>
+
+<h1>Freelancer</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="row">No</th>
+      <th scope="col">Time</th>
+      <th scope="col">Job/Career</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Financial</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <%count = 1%>
+      <% @user.form1s.each do |form1| %>
+        <tr>
+            <th><%=count %></th>
+            <td><%= form1.time %></td>
+            <td><%= form1.job %></td>
+            <td><%= form1.customer %></td>
+            <td><%= form1.income %></td>
+            <td><%= form1.work_desc %></td>
+            <td><%= link_to "Edit", edit_form1_path(form1) %></td>
+            <%count += 1%>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<h1>Company</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="row">No</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Tax Code</th>
+      <th scope="col">Address</th>
+      <th scope="col">Job/Career</th>
+      <th scope="col">Dtae</th>
+      <th scope="col">Financial</th>
+      <th scope="col">Description</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+      <%count = 1%>
+      <% @user.form2s.each do |form2| %>
+        <tr>
+            <th><%=count %></th>
+            <td><%= form2.company_name %></td>
+            <td><%= form2.tax_code %></td>
+            <td><%= form2.address %></td>
+            <td><%= form2.career %></td>
+            <td><%= form2.date %></td>
+            <td><%= form2.income %></td>
+            <td><%= form2.work_decs %></td>
+            <td><%= form2.note %></td>
+            <td><%= link_to "Edit", edit_form2_path(form2) %></td>
+            <%count += 1%>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
