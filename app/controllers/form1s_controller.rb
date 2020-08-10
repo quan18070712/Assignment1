@@ -7,6 +7,21 @@ class Form1sController < ApplicationController
     @form1 = Form1.find(params[:id])
   end
 
+  def edit
+    @form1 = Form1.find(params[:id])
+  end
+
+  def update
+    @form1 = Form1.find(params[:id])
+    if @form1.update(form1_params)
+      # Handle a successful update.
+      flash[:success] = "Form updated"
+      redirect_to current_user
+    else
+      render "edit"
+    end
+  end
+
   def create
     @form1 = Form1.new(form1_params.merge(user_id: current_user.id))
     if @form1.save
