@@ -10,106 +10,103 @@
       </h1>
     </section>
   </aside>
-
   <br/>
   <br/>
   <br/>
   <br/>
-  <br/> 
   <br/>
-
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <li><%= link_to "Income reporting form for Freelancer", form1s_new_path %></li>
-      </h1>
-    </section>
-  </aside>
-</div>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <li><%= link_to "Income reporting form for Company", form2s_new_path %></li>
-      </h1>
-    </section>
-  </aside>
-</div>
-
-<h1>Freelancer</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="row">No</th>
-      <th scope="col">Time</th>
-      <th scope="col">Date</th>
-      <th scope="col">Job/Career</th>
-      <th scope="col">Customer</th>
-      <th scope="col">Financial</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
+  <br/>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <li><%= link_to "Income reporting form for Freelancer", form1s_new_path %></li>
+        </h1>
+      </section>
+    </aside>
+  </div>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <li><%= link_to "Income reporting form for Company", form2s_new_path %></li>
+        </h1>
+      </section>
+    </aside>
+  </div>
+  <h1>Freelancer</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="row">No</th>
+        <th scope="col">Time</th>
+        <th scope="col">Date</th>
+        <th scope="col">Job/Career</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Financial</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
       <%count = 1%>
       <% @user.form1s.each do |form1| %>
         <tr>
-            <th><%=count %></th>
-            <td><%= form1.time %></td>
-            <td><%= form1.date %></td>
-            <td><%= form1.job %></td>
-            <td><%= form1.customer %></td>
-            <td><%= form1.income %></td>
-            <td><%= form1.work_desc %></td>
-            <td><%= link_to "Edit", edit_form1_path(form1) %></td>
-            <%count += 1%>
+          <th><%=count %></th>
+          <td><%= form1.time %></td>
+          <td><%= form1.date %></td>
+          <td><%= form1.job %></td>
+          <td><%= form1.customer %></td>
+          <td><%= form1.income %></td>
+          <td><%= form1.work_desc %></td>
+          <td><%= link_to "Edit", edit_form1_path(form1) %></td>
+          <td><%= link_to 'Export', form1s_path(format: :csv)%></td>
+          <%count += 1%>
         </tr>
       <% end %>
-  </tbody>
-</table>
-
-<h1>Company</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="row">No</th>
-      <th scope="col">Company Name</th>
-      <th scope="col">Tax Code</th>
-      <th scope="col">Address</th>
-      <th scope="col">Job/Career</th>
-      <th scope="col">Date</th>
-      <th scope="col">Financial</th>
-      <th scope="col">Description</th>
-      <th scope="col">Note</th>
-    </tr>
-  </thead>
-  <tbody>
+    </tbody>
+  </table>
+  <h1>Company</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="row">No</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Tax Code</th>
+        <th scope="col">Address</th>
+        <th scope="col">Job/Career</th>
+        <th scope="col">Date</th>
+        <th scope="col">Financial</th>
+        <th scope="col">Description</th>
+        <th scope="col">Note</th>
+      </tr>
+    </thead>
+    <tbody>
       <%count = 1%>
       <% @user.form2s.each do |form2| %>
         <tr>
-            <th><%=count %></th>
-            <td><%= form2.company_name %></td>
-            <td><%= form2.tax_code %></td>
-            <td><%= form2.address %></td>
-            <td><%= form2.career %></td>
-            <td><%= form2.date %></td>
-            <td><%= form2.income %></td>
-            <td><%= form2.work_decs %></td>
-            <td><%= form2.note %></td>
-            <td><%= link_to "Edit", edit_form2_path(form2) %></td>
-            <%count += 1%>
+          <th><%=count %></th>
+          <td><%= form2.company_name %></td>
+          <td><%= form2.tax_code %></td>
+          <td><%= form2.address %></td>
+          <td><%= form2.career %></td>
+          <td><%= form2.date %></td>
+          <td><%= form2.income %></td>
+          <td><%= form2.work_decs %></td>
+          <td><%= form2.note %></td>
+          <td><%= link_to "Edit", edit_form2_path(form2) %></td>
+          <td><%= link_to 'Export', form2s_path(format: :csv)%></td>
+          <%count += 1%>
         </tr>
       <% end %>
-  </tbody>
-</table>
-
-<div class="col-md-8">
-  <% if @user.microposts.any? %>
-  <h3>Microposts (<%= @user.microposts.count %>)</h3>
-  <ol class="microposts">
-  <%= render @microposts %>
-  </ol>
-  <%= will_paginate @microposts %>
-  <% end %>
+    </tbody>
+  </table>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
   </div>
 </div>
