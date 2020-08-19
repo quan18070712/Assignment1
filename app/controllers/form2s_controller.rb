@@ -7,6 +7,14 @@ class Form2sController < ApplicationController
     @form2 = Form2.find(params[:id])
   end
 
+  def index
+    @form2 = Form2.where(user_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @form2.as_csv }
+    end
+  end
+
   def edit
     @form2 = Form2.find(params[:id])
   end

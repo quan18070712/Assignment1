@@ -3,6 +3,14 @@ class Form1sController < ApplicationController
     @form1 = Form1.new
   end
 
+  def index
+    @form1 = Form1.where(user_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @form1.as_csv }
+    end
+  end
+
   def show
     @form1 = Form1.find(params[:id])
   end
